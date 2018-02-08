@@ -55,24 +55,24 @@ var _scripts = require("./../js/scripts.js");
 
 $(document).ready(function () {
   var round = new _scripts.Cards(0, [5, 3, 0, 2, 4, 1]);
-  $("#form").on("click", function (event) {
+  $("#form").submit(function (event) {
     event.preventDefault();
     round.shuffle();
     // for (var i = 0; i < 6; i++) {
     //   $(".cards").append(
     //     '<form id=card' + i + '>' +
     //       '<span title="Take a guess!"><img src="../img/black-square.jpg" /></span>'
-    //       + '<button type=submit>Flip Card</button>'
+    //       + '<button type="submit" type=submit>Flip Card</button>'
     //       + '</form>'
     //   );
     // }
     $("#form").empty();
     round.matches.forEach(function (number) {
-      $(".cards").append('<form id="card' + number + '">' + '<span title="Take a guess!"><img src="../img/black-square.jpg" /></span><br>' + '<button>Flip Card</button>' + '</form><br>');
+      $(".cards").append('<form id="card' + number + '">' + '<span title="Take a guess!"><img src="../img/black-square.jpg" /></span><br>' + '<button type="submit">Flip Card</button>' + '</form><br>');
     });
 
     var _loop = function _loop(i) {
-      $("#card" + i).on("click", function (event) {
+      $("#card" + i).submit(function (event) {
         event.preventDefault();
         round.nextRound();
         //  console.log(round.matches);
@@ -103,7 +103,7 @@ $(document).ready(function () {
           $(".cards").empty();
           round.matches.forEach(function (number) {
             debugger;
-            $(".cards").append('<form id="card' + number + '">' + '<span title="Take a guess!"><img src="../img/black-square.jpg" /></span><br>' + '<button>Flip Card</button>' + '</form><br>');
+            $(".cards").append('<form id="card' + number + '">' + '<span title="Take a guess!"><img src="../img/black-square.jpg" /></span><br>' + '<button type="submit">Flip Card</button>' + '</form><br>');
           });
         } else if (round.count === 1) {
           $("#card" + i).empty();
