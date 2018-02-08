@@ -1,6 +1,6 @@
 export class Cards {
   constructor(count, matches) {
-    this.count = 0;
+    this.count = count;
     this.matches = matches;
     this.matched = [];
   }
@@ -11,7 +11,7 @@ export class Cards {
     } else {
       this.count = 0;
     }
-    return this.count;
+    // return this.count;
   };
 
   shuffle() {
