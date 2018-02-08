@@ -2,9 +2,10 @@ import { Cards } from "./../js/scripts.js";
 
 $(document).ready(function(){
   let arr = [];
-  var round = new Cards(0, arr);
+  var round = new Cards(0, [5, 3, 0, 2, 4, 1]);
   $("#form").submit(function(event) {
     event.preventDefault();
+    round.shuffle();
     // for (var i = 0; i < 6; i++) {
     //   $(".cards").append(
     //     '<form id=card' + i + '>' +

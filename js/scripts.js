@@ -1,7 +1,7 @@
 export class Cards {
   constructor(count, matches) {
     this.count = 0;
-    this.matches = [5, 3, 0, 2, 4, 1];
+    this.matches = matches;
     this.matched = [];
   }
 
@@ -15,23 +15,16 @@ export class Cards {
   };
 
   shuffle() {
-    let currentIndex = this.matches.length;
-    let temporaryValue;
-    let randomIndex;
+    let i = 0;
+    let j = 0;
+    let temp = null;
 
   // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = this.matches[currentIndex];
-      this.matches[currentIndex] = this.matches[randomIndex];
-      this.matches[randomIndex] = temporaryValue;
+    for (i = this.matches.length - 1; i > 0; i -= 1) {
+      j = Math.floor(Math.random() * (i + 1))
+      temp = this.matches[i]
+      this.matches[i] = this.matches[j]
+      this.matches[j] = temp
     }
-
-    return this.matches;
   }
 }

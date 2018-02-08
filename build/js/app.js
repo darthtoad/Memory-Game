@@ -14,7 +14,7 @@ var Cards = exports.Cards = function () {
     _classCallCheck(this, Cards);
 
     this.count = 0;
-    this.matches = [5, 3, 0, 2, 4, 1];
+    this.matches = matches;
     this.matched = [];
   }
 
@@ -31,24 +31,17 @@ var Cards = exports.Cards = function () {
   }, {
     key: "shuffle",
     value: function shuffle() {
-      var currentIndex = this.matches.length;
-      var temporaryValue = void 0;
-      var randomIndex = void 0;
+      var i = 0;
+      var j = 0;
+      var temp = null;
 
       // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = this.matches[currentIndex];
-        this.matches[currentIndex] = this.matches[randomIndex];
-        this.matches[randomIndex] = temporaryValue;
+      for (i = this.matches.length - 1; i > 0; i -= 1) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = this.matches[i];
+        this.matches[i] = this.matches[j];
+        this.matches[j] = temp;
       }
-
-      return this.matches;
     }
   }]);
 
@@ -62,9 +55,10 @@ var _scripts = require("./../js/scripts.js");
 
 $(document).ready(function () {
   var arr = [];
-  var round = new _scripts.Cards(0, arr);
+  var round = new _scripts.Cards(0, [5, 3, 0, 2, 4, 1]);
   $("#form").submit(function (event) {
     event.preventDefault();
+    round.shuffle();
     // for (var i = 0; i < 6; i++) {
     //   $(".cards").append(
     //     '<form id=card' + i + '>' +
